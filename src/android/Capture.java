@@ -56,6 +56,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 public class Capture extends CordovaPlugin {
 
@@ -300,6 +301,8 @@ public class Capture extends CordovaPlugin {
                 intent.putExtra("android.intent.extra.durationLimit", req.duration);
                 intent.putExtra("android.intent.extra.videoQuality", req.quality);
             }
+            // refactor needed: text should be a parameter sent to plugin
+            Toast.makeText(this.cordova.getActivity().getApplicationContext(),"Max time limit 3 minutes", Toast.LENGTH_LONG).show();
             this.cordova.startActivityForResult((CordovaPlugin) this, intent, req.requestCode);
         }
     }
